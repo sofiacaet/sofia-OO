@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="675.0" style="-fx-background-color: #d5f5d1;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="675.0" style="-fx-background-color: #d5f5d1;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.caetano.TerceiraTelaController">
    <children>
       <Label layoutX="271.0" layoutY="34.0" text="Boletim">
          <font>
@@ -34,10 +33,11 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="206.0" layoutY="384.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="219.0" text="Voltar" />
-      <TextField layoutX="158.0" layoutY="132.0" prefHeight="52.0" prefWidth="149.0" />
-      <TextField layoutX="461.0" layoutY="271.0" prefHeight="52.0" prefWidth="149.0" />
-      <TextField layoutX="461.0" layoutY="132.0" prefHeight="52.0" prefWidth="149.0" />
-      <TextField layoutX="158.0" layoutY="271.0" prefHeight="52.0" prefWidth="149.0" />
+      <Button layoutX="231.0" layoutY="382.0" mnemonicParsing="false" onAction="#voltar" prefHeight="25.0" prefWidth="219.0" text="Voltar" />
+      <TextField fx:id="nota1Field" layoutX="158.0" layoutY="132.0" prefHeight="52.0" prefWidth="149.0" />
+      <TextField fx:id="nota4Field" layoutX="461.0" layoutY="271.0" prefHeight="52.0" prefWidth="149.0" />
+      <TextField fx:id="nota3Field" layoutX="461.0" layoutY="132.0" prefHeight="52.0" prefWidth="149.0" />
+      <TextField fx:id="nota2Field" layoutX="158.0" layoutY="271.0" prefHeight="52.0" prefWidth="149.0" />
+      <Button layoutX="486.0" layoutY="383.0" mnemonicParsing="false" onAction="#listar" text="Listar Alunos" />
    </children>
 </AnchorPane>

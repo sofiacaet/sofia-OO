@@ -4,40 +4,18 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="361.0" prefWidth="534.0" style="-fx-background-color: #add8e6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.caetano.PrimeiraTelaController>
-   <children>
-      <Label layoutX="105.0" layoutY="31.0" text="Cadastro de Alunos">
-         <font>
-            <Font name="Source Serif Pro Black" size="36.0" />
-         </font>
-      </Label>
-      <Label layoutX="63.0" layoutY="104.0" text="Nome">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="73.0" layoutY="241.0" text="CPF">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="63.0" layoutY="150.0" text="Data de nascimento">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="67.0" layoutY="192.0" text="Email">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <TextField fx:id="nomefield" layoutX="126.0" layoutY="105.0" prefHeight="25.0" prefWidth="317.0" promptText="Digite seu nome.." />
-      <TextField fx:id="nascimentofield" layoutX="236.0" layoutY="151.0" prefHeight="25.0" prefWidth="203.0" promptText="__/__/____" />
-      <TextField fx:id="cpffield" layoutX="126.0" layoutY="242.0" prefHeight="25.0" prefWidth="311.0" promptText="___.___.___-__" />
-      <TextField fx:id="emailfield" layoutX="126.0" layoutY="193.0" prefHeight="25.0" prefWidth="311.0" promptText="example@email.com" />
-      <Button fx:id="cadastrarfield" layoutX="126.0" layoutY="304.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="25.0" prefWidth="272.0" text="Cadastrar" />
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.caetano.PrimeiraTelaController">
+    <children>
+        <Label layoutX="237.0" layoutY="59.0" text="Cadastro de Alunos" />
+        <Label layoutX="66.0" layoutY="111.0" text="Nome" />
+        <Label layoutX="67.0" layoutY="154.0" text="Email" />
+        <Label layoutX="73.0" layoutY="233.0" text="CPF" />
+        <Label layoutX="64.0" layoutY="192.0" text="Data de nascimento" />
+        <TextField fx:id="nomeField" layoutX="118.0" layoutY="107.0" promptText="Nome Completo" />
+        <TextField fx:id="emailField" layoutX="118.0" layoutY="150.0" promptText="@example@email.com" />
+        <TextField fx:id="dtField" layoutX="215.0" layoutY="188.0" promptText="__/__/____/" />
+        <TextField fx:id="cpfField" layoutX="118.0" layoutY="229.0" promptText="___.___.___-__" />
+        <Button layoutX="269.0" layoutY="313.0" mnemonicParsing="false" onAction="#cadastrar" text="Cadastrar" />
+    </children>
 </AnchorPane>

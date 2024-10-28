@@ -1,15 +1,16 @@
 package com.caetano;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class PrimeiraTelaController{
+public class PrimeiraTelaController {
 
     @FXML
     private ResourceBundle resources;
@@ -18,56 +19,70 @@ public class PrimeiraTelaController{
     private URL location;
 
     @FXML
-    private Button cadastrarfield;
+    private TextField cpfField;
 
     @FXML
-    private TextField cpffield;
+    private TextField dtField;
 
     @FXML
-    private TextField emailfield;
+    private TextField emailField;
 
     @FXML
-    private TextField nascimentofield;
-
-    @FXML
-    private TextField nomefield;
-
-    @FXML
-    void cadastrar(ActionEvent event) {
-
-    }
+    private TextField nomeField;
 
     @FXML
     void initialize() {
-        assert cadastrarfield != null : "fx:id=\"cadastrarfield\" was not injected: check your FXML file 'primeiraTela.fxml'.";
-        assert cpffield != null : "fx:id=\"cpffield\" was not injected: check your FXML file 'primeiraTela.fxml'.";
-        assert emailfield != null : "fx:id=\"emailfield\" was not injected: check your FXML file 'primeiraTela.fxml'.";
-        assert nascimentofield != null : "fx:id=\"nascimentofield\" was not injected: check your FXML file 'primeiraTela.fxml'.";
-        assert nomefield != null : "fx:id=\"nomefield\" was not injected: check your FXML file 'primeiraTela.fxml'.";
-
+        assert cpfField != null : "fx:id=\"cpfField\" was not injected: check your FXML file 'primeiraTela.fxml'.";
+        assert dtField != null : "fx:id=\"dtField\" was not injected: check your FXML file 'primeiraTela.fxml'.";
+        assert emailField != null : "fx:id=\"emailField\" was not injected: check your FXML file 'primeiraTela.fxml'.";
+        assert nomeField != null : "fx:id=\"nomeField\" was not injected: check your FXML file 'primeiraTela.fxml'.";
     }
 
     @FXML
-    void CadastrarAluno(ActionEvent event) {
-        String nome = nomefield.getText();
-        String dataNascimento = nascimentofield.getText();
-        String cpf = cpffield.getText();
-        String email = emailfield.getText();
+    void cadastrar(ActionEvent event) { // Pega dados que o usuário digitou
+        String nome = nomeField.getText();
+        String email = emailField.getText();
+        String dataNascimento = dtField.getText();
+        String cpf = cpfField.getText();
 
-        Aluno aluno = new Aluno(nome, dataNascimento, cpf, email);
+        Aluno aluno = new Aluno(nome, email, dataNascimento, cpf);
 
-         // Troca a tela
-         try {
-            App.setRoot("segundaTela");
+        // arquivo - filewriter adiciona um novo dado ao final do que já existe
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("alunos.txt", true))) {
+            writer.write(nome + ", " + email + ", " + dataNascimento + ", " + cpf); // escrever nome no arquivo
+            writer.newLine(); // nova linha -> pra pular uma linha
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setHeaderText("Erro ao salvar dados");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+            return;
+        }
+
+        // Sucesso
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("CADASTRO COMPLETO!!");
+        alert.setHeaderText("Cadastrado completo com sucesso!!");
+        alert.setContentText(aluno.toString());
+        alert.showAndWait();
+
+        // Limpa
+        nomeField.clear();
+        emailField.clear();
+        dtField.clear();
+        cpfField.clear();
+
+        // Troca a tela
+        try {
+            App.setRoot("terceiraTela");
         } catch (IOException e) {
             e.printStackTrace(); // Erro
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
             errorAlert.setTitle("Erro");
-            errorAlert.setHeaderText("Erro ao abrir a nova tela");
+            errorAlert.setHeaderText("Erro ao abrir a nova tela!");
             errorAlert.setContentText(e.getMessage());
             errorAlert.showAndWait();
         }
     }
-
-
 }
