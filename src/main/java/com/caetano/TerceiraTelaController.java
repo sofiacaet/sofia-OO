@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -35,21 +36,22 @@ public class TerceiraTelaController
     void voltar(ActionEvent event) 
     {
     try {
-        App.setRoot("primeiraTela"); // Certifique-se de que o nome do arquivo FXML está correto
+        App.setRoot("primeiraTela"); 
     } catch (IOException e) 
     {
-        e.printStackTrace(); // Lide com o erro, se ocorrer
+        e.printStackTrace(); 
     }
     }
 
     @FXML
-    void listar(ActionEvent event) 
+    void listar(ActionEvent event) //so salva a media quando apertar nesse botão listar
     {
+        cadastrar(event);
     try {
-        App.setRoot("segundaTela"); // Certifique-se de que o nome do arquivo FXML está correto
+        App.setRoot("segundaTela"); 
     } catch (IOException e) 
     {
-        e.printStackTrace(); // Lide com o erro, se ocorrer
+        e.printStackTrace(); 
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Erro");
         alert.setHeaderText("Erro ao abrir a lista de alunos");
@@ -70,36 +72,35 @@ public class TerceiraTelaController
     }
 
     @FXML
-    void cadastrar(ActionEvent event) {
-        try {
-            // Pega os valores das notas
-            int nota1 = Integer.parseInt(nota1Field.getText());
-            int nota2 = Integer.parseInt(nota2Field.getText());
-            int nota3 = Integer.parseInt(nota3Field.getText());
-            int nota4 = Integer.parseInt(nota4Field.getText());
+void cadastrar(ActionEvent event) {
+    try {
+        // Obtém as notas inseridas
+        int nota1 = Integer.parseInt(nota1Field.getText());
+        int nota2 = Integer.parseInt(nota2Field.getText());
+        int nota3 = Integer.parseInt(nota3Field.getText());
+        int nota4 = Integer.parseInt(nota4Field.getText());
 
-            Notas notas = new Notas(nota1, nota2, nota3, nota4);
-            int media = notas.getMedia(); // chama a função
+        // Calcula a média
+        Notas notas = new Notas(nota1, nota2, nota3, nota4);
+        int media = notas.getMedia();
 
-            // salva no arquivo
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("alunos.txt", true))) {
-                writer.write("Média: " + media);
-                writer.newLine();
-            }
-
-            // troca telaa
-            App.setRoot("segundaTela");
-
-        } catch (Exception e) 
-        {
-
-            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setTitle("Erro");
-            errorAlert.setHeaderText("Ocorreu um erro.");
-            errorAlert.setContentText("Por favor, verifique os dados inseridos.");
-            errorAlert.showAndWait();
+        // Salva no arquivo com identificação
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("alunos.txt", true))) {
+            writer.write("Notas: " + nota1 + ", " + nota2 + ", " + nota3 + ", " + nota4 + " - Média: " + media);
+            writer.newLine();
         }
+
+        // Troca para a tela de listagem
+        App.setRoot("segundaTela");
+
+    } catch (Exception e) {
+        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+        errorAlert.setTitle("Erro");
+        errorAlert.setHeaderText("Ocorreu um erro.");
+        errorAlert.setContentText("Por favor, verifique os dados inseridos.");
+        errorAlert.showAndWait();
     }
+}
 
 
 }

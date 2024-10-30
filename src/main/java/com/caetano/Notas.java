@@ -1,6 +1,7 @@
 package com.caetano;
 
-
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.Serializable;
 
 public class Notas implements Serializable {
@@ -10,7 +11,8 @@ public class Notas implements Serializable {
     private int nota3;
     private int nota4;
 
-    public Notas(int nota1, int nota2, int nota3, int nota4) {
+    public Notas(int nota1, int nota2, int nota3, int nota4) //construtor
+    {
         this.nota1 = nota1;
         this.nota2 = nota2;
         this.nota3 = nota3;
@@ -52,5 +54,8 @@ public class Notas implements Serializable {
     public int getMedia() {
         return (nota1 + nota2 + nota3 + nota4) / 4;
     }
+
+
+
 
 }

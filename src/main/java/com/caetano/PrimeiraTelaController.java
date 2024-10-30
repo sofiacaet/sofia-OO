@@ -39,19 +39,23 @@ public class PrimeiraTelaController {
     }
 
     @FXML
-    void cadastrar(ActionEvent event) { // Pega dados que o usuário digitou
+    void cadastrar(ActionEvent event) 
+    { // Pega dados que o usuário digitou
         String nome = nomeField.getText();
         String email = emailField.getText();
         String dataNascimento = dtField.getText();
-        String cpf = cpfField.getText();
+        String cpf = cpfField.getText(); // atribuindo a variavel
 
-        Aluno aluno = new Aluno(nome, email, dataNascimento, cpf);
+        Aluno aluno = new Aluno(nome, email, dataNascimento, cpf); //criando novo objeto
 
-        // arquivo - filewriter adiciona um novo dado ao final do que já existe
+        // arquivo - filewriter adiciona um novo dado ao final do que já existe ou seja pegando e colocando no arquivo que ja existe
+        // writer escrevendo no arquivo
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("alunos.txt", true))) {
             writer.write(nome + ", " + email + ", " + dataNascimento + ", " + cpf); // escrever nome no arquivo
             writer.newLine(); // nova linha -> pra pular uma linha
-        } catch (IOException e) {
+
+        } catch (IOException e) //explodindo uma mensagem de erro
+        {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro");
             alert.setHeaderText("Erro ao salvar dados");
@@ -67,7 +71,7 @@ public class PrimeiraTelaController {
         alert.setContentText(aluno.toString());
         alert.showAndWait();
 
-        // Limpa
+        // Limpar os campos
         nomeField.clear();
         emailField.clear();
         dtField.clear();

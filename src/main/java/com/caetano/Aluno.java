@@ -2,7 +2,8 @@ package com.caetano;
 
 import java.io.Serializable;
 
-public class Aluno implements Serializable {
+public class Aluno implements Serializable 
+{
 
     private String nome;
     private String nascimento;
@@ -11,7 +12,7 @@ public class Aluno implements Serializable {
     //private Notas notas;
 
     public Aluno(String nome, String nascimento, String cpf, String email) {
-        this.nome = nome;
+        this.nome = nome;//instanciando
         this.nascimento = nascimento;
         this.cpf = cpf;
         this.email = email;

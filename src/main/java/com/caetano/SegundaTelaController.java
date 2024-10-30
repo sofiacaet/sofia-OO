@@ -28,22 +28,22 @@ public class SegundaTelaController {
         assert listaField != null : "fx:id=\"listaField\" was not injected: check your FXML file 'segundaTela.fxml'.";
 
         //Aparecer alunos do arquivo
-        carregarAlunos();
+        carregarAlunos(); //chamando metodo 
 
     }
 
     // arquivo
 
-    private void carregarAlunos() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("alunos.txt"))) 
+    private void carregarAlunos() //no caso esse metodo pega oq ta no arquivo adiciona no lista field
+    {
+        listaField.getItems().clear(); // Limpa a lista antes de carregar novos dados
+        try (BufferedReader reader = new BufferedReader(new FileReader("alunos.txt"))) //reader pq ta lendo oq ta dentro do arquivo
         {
             String linha;
-            while ((linha = reader.readLine()) != null) 
-            {
+            while ((linha = reader.readLine()) != null) {
                 listaField.getItems().add(linha); // Adiciona cada linha ao listaField
             }
-        } catch (IOException e) 
-        {
+        } catch (IOException e) {
             e.printStackTrace();
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
             errorAlert.setTitle("Erro");
@@ -52,6 +52,7 @@ public class SegundaTelaController {
             errorAlert.showAndWait();
         }
     }
+    
 
     @FXML
     void voltarTela(ActionEvent event) {
