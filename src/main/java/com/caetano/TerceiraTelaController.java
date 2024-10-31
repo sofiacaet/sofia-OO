@@ -86,7 +86,7 @@ void cadastrar(ActionEvent event) {
 
         // Salva no arquivo com identificação
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("alunos.txt", true))) {
-            writer.write("Notas: " + nota1 + ", " + nota2 + ", " + nota3 + ", " + nota4 + " - Média: " + media);
+            writer.write(" Notas: " + nota1 + ", " + nota2 + ", " + nota3 + ", " + nota4 + " - Média: " + media);
             writer.newLine();
         }
 

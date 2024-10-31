@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="514.0" prefWidth="609.0" style="-fx-background-color: #FFCBDB;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.caetano.SegundaTelaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="514.0" prefWidth="609.0" style="-fx-background-color: #FFCBDB;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.caetano.SegundaTelaController">
    <children>
       <Label layoutX="175.0" layoutY="45.0" text="Lista de alunos">
          <font>
@@ -14,7 +14,16 @@
          </font>
       </Label>
       <ListView fx:id="listaField" layoutX="61.0" layoutY="162.0" prefHeight="254.0" prefWidth="488.0" style="-fx-background-color: #ffe4ec;" />
-      <Button fx:id="voltarButton" layoutX="207.0" layoutY="446.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="195.0" text="Voltar" onAction="#voltarTela" />
+      
+      <!-- Botão Voltar -->
+      <Button fx:id="voltarButton" layoutX="236.0" layoutY="446.0" mnemonicParsing="false" onAction="#voltarTela" prefHeight="25.0" prefWidth="94.0" text="Voltar" />
+      
+      <!-- Botão Excluir -->
+      <Button fx:id="excluirButton" layoutX="91.0" layoutY="446.0" mnemonicParsing="false" onAction="#excluirAluno" prefHeight="25.0" prefWidth="85.0" text="Excluir" />
+      
+      <!-- Botão Editar -->
+      <Button fx:id="editarButton" layoutX="402.0" layoutY="446.0" mnemonicParsing="false" onAction="#editarAluno" prefHeight="25.0" prefWidth="94.0" text="Editar" />
+
       <Label layoutX="455.0" layoutY="124.0" text="Email">
          <font>
             <Font size="24.0" />

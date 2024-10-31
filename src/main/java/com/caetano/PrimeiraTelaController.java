@@ -51,8 +51,8 @@ public class PrimeiraTelaController {
         // arquivo - filewriter adiciona um novo dado ao final do que já existe ou seja pegando e colocando no arquivo que ja existe
         // writer escrevendo no arquivo
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("alunos.txt", true))) {
-            writer.write(nome + ", " + email + ", " + dataNascimento + ", " + cpf); // escrever nome no arquivo
-            writer.newLine(); // nova linha -> pra pular uma linha
+            writer.write(nome + " Email: " + email + " Data de Nascimento: " + dataNascimento + " CPF: " + cpf); // escrever nome no arquivo
+            //writer.newLine(); // nova linha -> pra pular uma linha
 
         } catch (IOException e) //explodindo uma mensagem de erro
         {
